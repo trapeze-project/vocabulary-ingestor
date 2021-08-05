@@ -1,0 +1,9 @@
+config/data/clean-logs.sh
+config/data/dumps
+config/data/virtuoso.db
+config/data/virtuoso.ini
+config/data/virtuoso.lck
+config/data/virtuoso.log
+config/data/virtuoso.pxa
+config/data/virtuoso-temp.db
+config/data/virtuoso.trx

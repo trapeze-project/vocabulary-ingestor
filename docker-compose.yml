@@ -1,0 +1,23 @@
+version: '3.2'
+services:
+  # database, the single source of truth
+  db:
+    image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
+    environment:
+      SPARQL_UPDATE: "true"
+      DEFAULT_GRAPH: "http://xdc.tenforce.com/application"
+    ports:
+      - "8890:8890"
+    volumes:
+      - ./config/data:/data
+
+  # maybe make this Nathaniel's version and add Nathaniel's service
+  # so we can use delta's and and eventually maybe yield authorization
+  resource:
+    image: semtech/mu-cl-resources:1.20.0
+    ports:
+      - "80:80"
+    links:
+      - db:database
+    volumes:
+      - ./config/resources:/config
