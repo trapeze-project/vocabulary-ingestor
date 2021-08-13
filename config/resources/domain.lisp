@@ -17,7 +17,7 @@
                 )
   :has-one `((class :via ,(s-prefix "rdfs:subClassOf") :as "super-class"))
   :has-many `((class :via ,(s-prefix "rdfs:subClassOf") :inverse t :as "sub-classes"))
-  :resource-base (s-prefix "rdfs:Class")
+  :resource-base (s-prefix "http://www.w3.org/2000/01/rdf-schema#Class/")
   :on-path "classes"
 )
 
@@ -39,6 +39,19 @@
                 (class :via ,(s-prefix "rdfs:range") :as "classes-in-range")
                 (class :via ,(s-prefix "rdfs:domain") :as "classes-in-domain")
              )
-  :resource-base (s-prefix "rdf:Property")
+  :resource-base (s-prefix "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property/")
   :on-path "properties"
+)
+
+(define-resource data-source ()
+  :class (s-prefix "ext:Data-Source")
+  :properties `(
+                (:label :string ,(s-prefix "rdfs:label"))
+                (:description :string ,(s-prefix "dct:description"))
+                (:last-updated :datetime ,(s-prefix "dct:created"))
+                (:package-name :string ,(s-prefix "ext:package-name"))
+                (:version-identifier :string ,(s-prefix "ext:version-identifier"))
+                )
+  :resource-base (s-prefix "http://mu.semte.ch/vocabularies/ext/Data-Source/")
+  :on-path "data-sources"
 )
